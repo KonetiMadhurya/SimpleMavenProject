@@ -1,0 +1,22 @@
+pipeline{ agent any 
+tools { 
+maven 'Maven 3.8.6' 
+} 
+stages{ 
+stage("Git Clone"){ steps 
+{ 
+git 'https://github.com/KonetiMadhurya/hello-world.git' 
+} 
+} 
+stage("Build"){ steps 
+{ 
+bat 'mvn clean install' 
+} 
+} 
+stage("Deploy"){ steps 
+{ 
+bat 'copy "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\pipeline\\webapp\\target\\webapp.war" "C:\\Users\\Ramesh Babu\\Downloads\\apache-tomcat-10.1.1-windows-x64\\apache-tomcat-10.1.1\\webapps"' 
+} 
+} 
+} 
+} 
